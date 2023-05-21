@@ -48,6 +48,11 @@ async function run() {
       console.log(result);
       res.send(result);
     });
+
+    app.get("/allToys", async (req, res) => {
+      const result = await galleryCollection.find({}).toArray();
+      res.send(result);
+    })
     
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
